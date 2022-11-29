@@ -1,5 +1,7 @@
 package co.tiagoaguiar.ganheinamega
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,16 +11,32 @@ import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var prefs: SharedPreferences
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //Aqui é onde se decide o que o APP irá fazer.
         setContentView(R.layout.activity_main)
 
-        //Buscar os objetos e ter a refer~encias deles.
+
+
+        //Buscar os objetos e ter a referências deles.
         val editText: EditText = findViewById(R.id.edit_number)
         val txtResult: TextView = findViewById(R.id.txt_result)
         val btnGenerate: Button = findViewById(R.id.btn_generate)
+
+        //Banco de dados de preferências
+        prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
+        val result = prefs.getString("result", null)
+        if (result != null){
+            txtResult.text = "Última aposta: $result"
+        }
+
+
+
 
         //opção 2: variavel que seja do tipo View.onClickListener (interface)
         //btnGenerate.setOnClickListener(buttonClickListener)
@@ -61,6 +79,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         txtResult.text = numbers.joinToString(" - ")
+
+        val editor = prefs.edit()
+        editor.putString("result", txtResult.text.toString())
+        editor.apply()
+
+        //o editor.commit() -> salvar de forma sincrona (brloquear a interface)
+        //                     e informa se teve sucesso ou não (retorna boolean)
+
+        //o editor.apply -> Salva de forma assincrona (não ira bloquear a interface)
+        //                  não informa se teve sucesso ou não
 
 
     }
