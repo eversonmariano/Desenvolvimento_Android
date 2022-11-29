@@ -35,11 +35,14 @@
 
     <TextView
         android:id="@+id/txt_result"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:textSize="20sp"
         tools:text="olá mundo"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_number" />
@@ -53,5 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="buttonClicked"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_result" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_result"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>
