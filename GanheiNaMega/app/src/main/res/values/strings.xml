@@ -3,4 +3,7 @@
     <string name="title">Boa Sorte</string>
     <string name="number_hint">Digite um número entre 6 e 15</string>
     <string name="number_generator">GERAR NÚMEROS</string>
+    <string name="txt_autor">Autor: EversonMariano</string>
+    <string name="txt_title">AGORA É A HORA! BOA SORTE!</string>
+    <string name="tit">MEGA-SENA</string>
 </resources>

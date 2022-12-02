@@ -31,8 +31,12 @@ class MainActivity : AppCompatActivity() {
         //Banco de dados de preferências
         prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
         val result = prefs.getString("result", null)
-        if (result != null){
+     /*   if (result != null){
             txtResult.text = "Última aposta: $result"
+        }*/
+        //reescrevendo o código acima
+        result?.let {
+            txtResult.text = "Última aposta: $it"
         }
 
 
@@ -83,6 +87,15 @@ class MainActivity : AppCompatActivity() {
         val editor = prefs.edit()
         editor.putString("result", txtResult.text.toString())
         editor.apply()
+
+        //Alternativa de código do bloco acima
+        /*
+        prefs.edit().apply{
+            putString("result", txtResult.txt.toString())
+            aplly()
+         */
+        /*
+         */
 
         //o editor.commit() -> salvar de forma sincrona (brloquear a interface)
         //                     e informa se teve sucesso ou não (retorna boolean)
