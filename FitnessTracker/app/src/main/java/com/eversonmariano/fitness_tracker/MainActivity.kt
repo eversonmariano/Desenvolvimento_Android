@@ -1,4 +1,4 @@
-package com.eversonmariano.fitnesstracker
+package com.eversonmariano.fitness_tracker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
